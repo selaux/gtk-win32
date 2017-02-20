@@ -665,10 +665,11 @@ class Project_gtk3(Project_gtk_base):
     def __init__(self):
         Project_gtk_base.__init__(self,
             'gtk3',
-            archive_url = 'http://ftp.acc.umu.se/pub/GNOME/sources/gtk+/3.22/gtk+-3.22.6.tar.xz',
-            hash = 'eba75a216a117f4391beb2971ba20ff8a1823f109893f0ab6c2eac2210ea172f',
+            archive_url = 'http://ftp.acc.umu.se/pub/GNOME/sources/gtk+/3.20/gtk+-3.20.9.tar.xz',
+            hash = '83a609ba2f3424b5509e73967c49c67833af466d6f91081b24ee5c64fce6ac17',
             dependencies = ['atk', 'gdk-pixbuf', 'pango', 'libepoxy'],
-            patches = ['gtk3-clip-retry-if-opened-by-others.patch'],
+            patches = ['gtk3-clip-retry-if-opened-by-others.patch',
+                       '0001-win32-rework-how-to-enumerate-the-monitors.patch'],
             )
 
     def build(self):
