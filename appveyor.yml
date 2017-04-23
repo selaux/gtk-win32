@@ -1,0 +1,28 @@
+image:
+  - Visual Studio 2013
+  - Visual Studio 2015
+platform:
+  - x86
+  - x64
+environment:
+  PYTHON: "C:\\Python36-x64"
+
+clone_folder: c:\gtk-build\github\gtk-win32
+shallow_clone: true
+
+init:
+  - cmd: ECHO %PYTHON%
+  - cmd: set PATH=%PYTHON%;%PYTHON%\scripts;%PATH%
+  - cmd: set MSYSTEM=MSYS
+  - cmd: set PYTHONIOENCODING=UTF-8
+  - cmd: python --version
+  - cmd: C:\Msys64\usr\bin\pacman.exe --noconfirm -S gzip nasm patch tar xz gettext make coreutils diffutils wget yasm pkg-config
+build_script:
+  - cd c:\gtk-build\github\gtk-win32
+  - python .\build.py --verbose --debug build
+on_failure:
+  - dir C:\gtk-build\github\gtk-win32\cairo
+  - C:\gtk-build\build\Win32\release
+
+cache:
+  - C:\gtk-build\src

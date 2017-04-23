@@ -58,7 +58,7 @@ def get_options(args):
     if not opts.vs_install_path:
         opts.vs_install_path = r'C:\Program Files (x86)\Microsoft Visual Studio %s.0' % (opts.vs_ver,)
 
-    opts.projects = args.project
+    opts.projects = args.project if len(args.project) > 0 else Project.get_names()
 
     for p in opts.projects:
         if not p in Project.get_names():
@@ -166,7 +166,7 @@ Examples:
     p_build.add_argument('--msbuild-opts', default='',
                          help='Command line options to pass to msbuild.')
 
-    p_build.add_argument('project', nargs='+',
+    p_build.add_argument('project', nargs='*',
                          help='Project(s) to build.')
 
     #==============================================================================

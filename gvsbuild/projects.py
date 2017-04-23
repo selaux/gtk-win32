@@ -1208,6 +1208,9 @@ class Project_pkg_config(Tarball, Project):
             )
 
     def build(self):
+        bin_dir = r'.\%s\%s' % (self.builder.opts.configuration, self.builder.opts.platform, )
+
+        self.exec_vs(r'mkdir -p ' + bin_dir)
         self.exec_vs(r'nmake /nologo /f Makefile.vc CFG=%(configuration)s GLIB_PREFIX="%(gtk_dir)s"')
 
         bin_dir = r'.\%s\%s' % (self.builder.opts.configuration, self.builder.opts.platform, )

@@ -370,4 +370,4 @@ class Builder(object):
             if k.lower() == 'path':
                 key = k
                 break
-        env[key] = env[key] + ';' + folder
+        env[key] = r"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\BIN;" + folder + ';' + env[key]
